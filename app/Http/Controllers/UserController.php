@@ -35,7 +35,7 @@ class UserController extends Controller
         $res = User::where('id',$arr['id'])->select('first_name', 'last_name')->get();
         $arr['first_name'] = $res[0]['first_name'];
         $arr['last_name'] = $res[0]['last_name'];
-        return view("articles1", $arr);
+        return view("articles", $arr);
     }
     public function check(Request $req)
     {
