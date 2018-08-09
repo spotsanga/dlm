@@ -44,7 +44,7 @@
                 </li>
             </ul>
     </nav>
-    <div class="container">
+    <div class="container-fluid">
         <input type="hidden" id="id" value="{{$id}}">
         <input type="hidden" id="_token" value="{{csrf_token()}}">
         <div id="myBar">
