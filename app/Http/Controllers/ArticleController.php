@@ -15,7 +15,7 @@ class ArticleController extends Controller
             return response()->json(['data' => ['code' => '2', 'msg' => 'Session Expired']]);
         }
         $data['code'] = '0';
-        $data['articles']=Article::select('name','author','title','description','url','urlToImage','publishedAt','topic');
+        $data['articles']=Article::select('name','author','title','description','url','urlToImage','publishedAt','topic')->get();
         return response()->json(['data' => $data]);
     }
 }
