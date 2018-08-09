@@ -1,19 +1,21 @@
-var url = 'https://newsapi.org/v2/everything?sources=the-hindu&apiKey=4b4233b0e7c243ea8bdd9abf5a19bbbd';
-
 function getArticles() {
+    var data = {};
+    data['id'] = $("#id").val();
     $.ajax({
         type: 'GET',
-        url: url,
+        data:data,
+        url: 'feeds',
     }).done(function (res) {
-        var articles = res['articles'];
+        var articles = res['data']['articles'];
         if (!articles.length){
             return;
         }
         move();
-        var code = '<thead><th>#</th><th>Title</th><th>Description</th><th>Published At</th><th></th></thead>';
-        for (var i = 0; i < 20; i++) {
+        var code = '<thead><th>#</th><th>Source</th><th>Title</th><th>Description</th><th>Published At</th><th></th></thead>';
+        for (var i = 0; i < articles.length; i++) {
             code += '<tr>';
             code += '<td><img class="rounded" src=' + articles[i]['urlToImage'] + ' height="100px" width="100px"></td>';
+            code += '<td>' + articles[i]['name'] + '</td>';
             code += '<td>' + articles[i]['title'] + '</td>';
             code += '<td>' + (articles[i]['description'] || "") + '</td>';
             var date = new Date(articles[i]['publishedAt']);
@@ -26,10 +28,6 @@ function getArticles() {
     $("#myBar").attr('width', '1');
 }
 getArticles();
-$("#source").on("change", function () {
-    url = 'https://newsapi.org/v2/everything?sources=' + $(this).val() + '&apiKey=4b4233b0e7c243ea8bdd9abf5a19bbbd';
-    getArticles();
-});
 
 function signout() {
     var data = {};

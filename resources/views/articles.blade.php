@@ -24,7 +24,6 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark sticky-top">
-        <div class="container">
             <span class="navbar-brand">Daily Life Management</span>
             <ul class="nav">
                 <li class="nav-item">
@@ -44,25 +43,10 @@
                     </ul>
                 </li>
             </ul>
-        </div>
     </nav>
-    <div class="container">
+    <div class="">
         <input type="hidden" id="id" value="{{$id}}">
         <input type="hidden" id="_token" value="{{csrf_token()}}">
-        <div>
-            <br>
-            <select id="source" class="form-control">
-                <option value="the-hindu">The Hindu</option>
-                <option value="the-times-of-india">The Times of India</option>
-                <option value="the-new-york-times">The New York Times</option>
-                <option value="news-24">News24</option>
-                <option value="abc-news">ABC News</option>
-                <option value="bcc-news">BCC News</option>
-                <option value="cbc-news">CBC News</option>
-                <option value="google-news-in">Google News India</option>
-            </select>
-            <br>
-        </div>
         <div id="myBar">
         </div>
         <table id='content' class="table table-hover">

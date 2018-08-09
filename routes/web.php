@@ -24,3 +24,5 @@ Route::post('expense','ExpenseController@add');
 
 Route::get('notes','NoteController@notes');
 Route::post('note','NoteController@add');
+
+Route::get('feeds','ArticleController@feeds');
