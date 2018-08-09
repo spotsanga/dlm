@@ -15,11 +15,6 @@
     <link rel="icon" href="images/icon.jpg">
 </head>
 <style>
-    #myProgress {
-        width: 100%;
-        background-color: grey;
-    }
-
     #myBar {
         width: 1%;
         height: 5px;
@@ -68,7 +63,7 @@
             </select>
             <br>
         </div>
-        <div id="myBar" style="display:none">
+        <div id="myBar">
         </div>
         <table id='content' class="table table-hover">
         </table>

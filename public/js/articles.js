@@ -6,6 +6,10 @@ function getArticles() {
         url: url,
     }).done(function (res) {
         var articles = res['articles'];
+        if (!articles.length){
+            return;
+        }
+        move();
         var code = '<thead><th>#</th><th>Title</th><th>Description</th><th>Published At</th><th></th></thead>';
         for (var i = 0; i < 20; i++) {
             code += '<tr>';
@@ -19,8 +23,7 @@ function getArticles() {
         }
         $("#content").html(code);
     });
-    $("#myBar").show();
-    move();
+    $("#myBar").attr('width', '1');
 }
 getArticles();
 $("#source").on("change", function () {
