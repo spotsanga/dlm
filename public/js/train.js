@@ -4,14 +4,14 @@ function getArticles() {
     $.ajax({
         type: 'GET',
         data:data,
-        url: 'feeds',
+        url: 'datasets',
     }).done(function (res) {
         var articles = res['data']['articles'];
         if (!articles.length){
             return;
         }
         move();
-        var code = '<thead><th>Title</th><th>Description</th><th></th></thead>';
+        var code = '<thead><th>Title</th><th>Description</th><th>Categorize</th><th></th></thead>';
         for (var i = 0; i < articles.length; i++) {
             code += '<tr>';
             code += '<td>' + articles[i]['title'] + '</td>';

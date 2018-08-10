@@ -27,4 +27,4 @@ Route::get('/notes','NoteController@notes');
 Route::post('/note','NoteController@add');
 
 Route::get('/feeds','ArticleController@feeds');
-Route::post('/categorize','ArticleController@set');
+Route::get('/datasets','ArticleController@datasets');
