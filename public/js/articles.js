@@ -11,7 +11,7 @@ function getArticles() {
             return;
         }
         move();
-        var code = '<thead><th>#</th><th>Title</th><th>Description</th><th>PublishedAt</th><th>Source</th></thead>';
+        var code = '<thead><th>#</th><th>Title</th><th>Description</th><th>PublishedAt</th><th>Source</th><th></th></thead>';
         for (var i = 0; i < articles.length; i++) {
             code += '<tr>';
             code += '<td><img class="rounded" src=' + articles[i]['urlToImage'] + ' height="100px" width="100px" onerror=this.src="images/news.png"></td>';
