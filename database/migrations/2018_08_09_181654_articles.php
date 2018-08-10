@@ -17,8 +17,8 @@ class Articles extends Migration
             $table->increments('id')->uinque();
             $table->string('name');
             $table->string('author');
-            $table->string('title',190);
-            $table->string('description',190);
+            $table->string('title',190)->nullable();
+            $table->string('description',190)->nullable();
             $table->index(['title','description']);
             $table->string('url');
             $table->string('urlToImage');
