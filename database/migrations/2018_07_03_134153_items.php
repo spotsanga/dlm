@@ -17,8 +17,8 @@ class Items extends Migration
             $table->increments('id');
             $table->unsignedInteger('expense_id');
             $table->foreign('expense_id')->references('id')->on('expenses');
-            $table->text('item_name');
-            $table->text('item_cost');
+            $table->string('item_name');
+            $table->string('item_cost');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

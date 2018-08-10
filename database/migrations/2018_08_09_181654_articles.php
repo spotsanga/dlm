@@ -14,15 +14,15 @@ class Articles extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('name');
-            $table->text('author');
-            $table->string('title',190)->unique();
-            $table->text('description');
-            $table->text('url');
-            $table->text('urlToImage');
-            $table->text('publishedAt');
-            $table->text('topic');
+            $table->increments('id')->uinque();
+            $table->string('name');
+            $table->string('author');
+            $table->string('title',190);
+            $table->string('description',190);
+            $table->index(['title','description']);
+            $table->string('url');
+            $table->string('urlToImage');
+            $table->string('publishedAt');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
