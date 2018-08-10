@@ -37,6 +37,17 @@ class UserController extends Controller
         $arr['last_name'] = $res[0]['last_name'];
         return view("articles", $arr);
     }
+    public function isUserForTrain()
+    {
+        if (!session()->has('id') || !User::find(session()->get('id'))) {
+            return redirect("/");
+        }
+        $arr['id'] = session()->get('id');
+        $res = User::where('id',$arr['id'])->select('first_name', 'last_name')->get();
+        $arr['first_name'] = $res[0]['first_name'];
+        $arr['last_name'] = $res[0]['last_name'];
+        return view("train", $arr);
+    }
     public function check(Request $req)
     {
         try {

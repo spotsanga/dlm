@@ -14,15 +14,17 @@
 Route::get('/','UserController@hasUser');
 Route::get('/dashboard', 'UserController@isUserForDashboard');
 Route::get('/articles', 'UserController@isUserForArticles');
+Route::get('/train','UserController@isUserForTrain');
 
-Route::post('signin','UserController@check');
-Route::post('signup','UserController@add');
-Route::POST('signout','UserController@clear');
+Route::post('/signin','UserController@check');
+Route::post('/signup','UserController@add');
+Route::POST('/signout','UserController@clear');
 
-Route::get('expenses','ExpenseController@expenses');
-Route::post('expense','ExpenseController@add');
+Route::get('/expenses','ExpenseController@expenses');
+Route::post('/expense','ExpenseController@add');
 
-Route::get('notes','NoteController@notes');
-Route::post('note','NoteController@add');
+Route::get('/notes','NoteController@notes');
+Route::post('/note','NoteController@add');
 
-Route::get('feeds','ArticleController@feeds');
+Route::get('/feeds','ArticleController@feeds');
+Route::post('/categorize','ArticleController@set');

@@ -30,10 +30,10 @@
                     <a class="nav-link" href="dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  active" href="#">Articles</a>
+                    <a class="nav-link" href="articles">Articles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="train">Train</a>
+                    <a class="nav-link active" href="#">Train</a>
                 </li>
             </ul>
             <ul class="nav justify-content-end">
@@ -58,4 +58,4 @@
 </body>
 
 </html>
-<script src="js/articles.js"></script>
+<script src="js/train.js"></script>

@@ -26,25 +26,28 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark sticky-top">
-        <div class="container">
-            <span class="navbar-brand">DLM</span>
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="articles">Articles</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        {{$first_name}}&nbsp;{{$last_name}}
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href=javascript:signout();>Sign-out</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+        <span class="navbar-brand">Daily Life Management</span>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="articles">Articles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="train">Train</a>
+            </li>
+        </ul>
+        <ul class="nav justify-content-end">
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            {{$first_name}}&nbsp;{{$last_name}}
+                        </a>
+                <ul class="dropdown-menu">
+                    <li><a href=javascript:signout();>Sign-out</a></li>
+                </ul>
+            </li>
+        </ul>
     </nav>
     <div class="container">
         <input type="hidden" id="id" value="{{$id}}">
