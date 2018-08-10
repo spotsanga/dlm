@@ -11,15 +11,15 @@ function getArticles() {
             return;
         }
         move();
-        var code = '<thead><th>#</th><th>Source</th><th>Title</th><th>Description</th><th>Published At</th><th></th></thead>';
+        var code = '<thead><th>#</th><th>Title</th><th>Description</th><th>Published At</th><th>Source</th></thead>';
         for (var i = 0; i < articles.length; i++) {
             code += '<tr>';
-            code += '<td><img class="rounded" src=' + articles[i]['urlToImage'] + ' height="100px" width="100px" onerror="news.png"></td>';
-            code += '<td>' + articles[i]['name'] + '</td>';
+            code += '<td><img class="rounded" src=' + articles[i]['urlToImage'] + ' height="100px" width="100px" onerror=this.src="images/news.png"></td>';
             code += '<td>' + articles[i]['title'] + '</td>';
             code += '<td>' + (articles[i]['description'] || "") + '</td>';
             var date = new Date(articles[i]['publishedAt']);
             code += '<td>' + date.toDateString() + "</td>";
+            code += '<td>' + articles[i]['name'] + '</td>';
             code += '<td><a target="_blank" href="' + articles[i]['url'] + '"><i class="fas fa-external-link-alt"></i></td>';
             code += '</tr>';
         }
