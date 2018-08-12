@@ -3,14 +3,19 @@ import pymysql
 pymysql.install_as_MySQLdb()
 import MySQLdb
 from newsapi import NewsApiClient
-
+from time import sleep
+from datetime import datetime
 newsapi = NewsApiClient(api_key='4b4233b0e7c243ea8bdd9abf5a19bbbd')
 sources = 'the-hindu,bbc-news,fox-news,the-times-of-india,cnn,espn'
 
 def getArticles():
+	f=open('logs.txt','w+')
+	now=datetime.now()
+	f.write(now.strftime("%c"))
+	f.close()
         db = MySQLdb.connect('127.0.0.1','root','','dlm')
         cursor = db.cursor()
-        page,limit = 1,10
+        page,limit = 1,3
         while page <= limit:
                 result = newsapi.get_everything(sources=sources,language='en',page=page)
                 articles = result['articles']
@@ -29,9 +34,10 @@ def getArticles():
                 print('completed=>'+str(page))
                 page+=1
         db.close()
-        #sleep(3600)
-        #getArticles()
+        sleep(300)
+        getArticles()
 try:
         getArticles()
-except:
+except Exception as e:
+	#print e
         pass
