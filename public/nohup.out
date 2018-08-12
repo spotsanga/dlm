@@ -1,0 +1,2 @@
+/home/ubuntu/.local/lib/python2.7/site-packages/pymysql/cursors.py:170: Warning: (1265, "Data truncated for column 'description' at row 1")
+  result = self._query(query)
