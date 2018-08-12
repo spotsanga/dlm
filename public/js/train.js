@@ -11,20 +11,27 @@ function getArticles(len=10) {
         move();
         var code = '';
         for (var i = 0; i < articles.length; i++) {
-            code += '<div class="card" style="margin:20px;border:1px solid #17A2B8;box-shadow: 7px 7px 5px #aaaaaa;border-radius:7px;" id="news-' + articles[i]['id'] + '">';
-            code += '<div class="code-header bg-info" style="padding:10px;border-top-left-radius:5px;border-top-right-radius:7px;text-transform:capitalize;">';
+            code += '<div class="card border-info" style="margin:20px;box-shadow: 7px 7px 5px #aaaaaa;border-radius:7px;" id="news-' + articles[i]['id'] + '">';
+            code += '<div class="code-header bg-info" style="padding:10px;border-top-left-radius:5px;border-top-right-radius:5px;text-transform:capitalize;">';
             code += '<b>' + articles[i]['title'] + '</b>';
             code += '<a style="float:right; color:black;" target="_blank" href="' + articles[i]['url'] + '"><i class="fas fa-external-link-alt"></i></a>';
             code += '</div>';
-            code += '<div class="code-body" align = "justify" style=" padding:10px;" >' + articles[i]['description'] + ' </div>'
-            code += '<div class="code-footer" >';
-            code += '<form style="padding:10px;text-transform:capitalize;" onsubmit="categorize(this);return false;"; class="form-inline" id="' + articles[i]['id'] + '">';
+            code += '<div class="code-body"  style=" padding:10px;" ><p class="card-text">' + articles[i]['description'] + ' </p></div>';
+            code += '<div class="code-footer">';
+            code += '<form class="row" style="padding-left:10px;padding-right:10px;text-transform:capitalize;" onsubmit="categorize(this);return false;"; id="' + articles[i]['id'] + '">';
+            code += '<div class="col-11">';
             for (var j = 0; j < categories.length; j++) {
-                code += '<input class="form-check-input" type="checkbox" name="categorie_id" value="' + categories[j]['id'] + '">';
-                code += '<span style="padding-right:10px;">' + categories[j]['category'] + '</span>';
+                code += '<label class="checkbox-inline" style="padding-right:10px;">';
+                code += '<input type="checkbox" name="categorie_id" value="' + categories[j]['id'] + '">';
+                code += '<i>'+categories[j]['category'] + '</i>';
+                code += '</label>';
             }
-            code += '<button type="submit" align="right" style="border-radius:50%;" class="btn btn-outline-success">';
-            code += '<font size="5px"><i class="fas fa-angle-right"></i></font></button>';
+            code +='</div>';
+            code += '<div class="col-1">';
+            code += '<button type="submit" style="border-radius:50%;" class="btn btn-outline-success">';
+            code += '<font><i class="fas fa-angle-right"></i></font>';
+            code += '</button>';
+            code += '</div>';
             code += '</form>';
             code += '</div>';
             code += '</div>';
