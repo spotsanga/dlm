@@ -18,7 +18,7 @@ Route::get('/train','UserController@isUserForTrain');
 
 Route::post('/signin','UserController@check');
 Route::post('/signup','UserController@add');
-Route::POST('/signout','UserController@clear');
+Route::post('/signout','UserController@clear');
 
 Route::get('/expenses','ExpenseController@expenses');
 Route::post('/expense','ExpenseController@add');
@@ -28,3 +28,4 @@ Route::post('/note','NoteController@add');
 
 Route::get('/feeds','ArticleController@feeds');
 Route::get('/datasets','ArticleController@datasets');
+Route::post('/categorize','ArticleController@categorize');

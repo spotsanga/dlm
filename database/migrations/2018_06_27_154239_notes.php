@@ -16,7 +16,7 @@ class Notes extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('title');
             $table->text('description');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

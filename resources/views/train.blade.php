@@ -18,7 +18,7 @@
     #myBar {
         width: 1%;
         height: 5px;
-        background-color: green;
+        background-color: #17A2B8;
     }
 </style>
 

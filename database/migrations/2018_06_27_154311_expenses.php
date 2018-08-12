@@ -16,7 +16,7 @@ class Expenses extends Migration
         Schema::create('expenses', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('category');
             $table->string('money_spent');
             $table->string('spent_at_date')->nullable();

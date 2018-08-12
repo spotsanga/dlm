@@ -13,3 +13,4 @@ insert into categories(category) values('tamizh');
 insert into categories(category) values('movies');
 insert into categories(category) values('actors');
 insert into categories(category) values('actress');
+insert into categories(category) values('smuggling');

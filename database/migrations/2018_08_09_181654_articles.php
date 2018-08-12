@@ -19,7 +19,7 @@ class Articles extends Migration
             $table->string('author');
             $table->string('title',190);
             $table->string('description',190);
-            $table->index(['title','description']);
+            $table->unique(['title','description']);
             $table->string('url');
             $table->string('urlToImage');
             $table->string('publishedAt');
