@@ -52,8 +52,8 @@
         <input type="hidden" id="_token" value="{{csrf_token()}}">
         <div id="myBar">
         </div>
-        <table id='content' class="table table-hover">
-        </table>
+        <div id="news">
+        </div>
     </div>
 </body>
 
