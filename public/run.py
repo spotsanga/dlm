@@ -11,7 +11,7 @@ sources = 'the-hindu,bbc-news,fox-news,the-times-of-india,cnn,espn'
 def getArticles():
         db = MySQLdb.connect('127.0.0.1','root','','dlm')
         cursor = db.cursor()
-        page,limit = 1,3
+        page,limit = 1,2
 	count = 0
         while page <= limit:
                 result = newsapi.get_everything(sources=sources,language='en',page=page)
@@ -34,12 +34,14 @@ def getArticles():
         db.close()
 	f=open('logs.txt','w+')
         now=datetime.now()
-        f.write(now.strftime("%c")+' ===> '+str(count))
+	content = now.strftime("%c")+' ===> '+str(count)+'\n'
+        f.write(content)
         f.close()
+	print content
         sleep(300)
         getArticles()
 try:
         getArticles()
 except Exception as e:
-	#print e
+	print e
         pass
