@@ -50,9 +50,7 @@ function categorize(obj){
     }).done(function(data){
         if(data['data']['code']==0){
             $("#news-"+data['data']['id']).remove();
-            if($("#news").children('div').length==0){
-                getArticles();
-            }
+            getArticles();
         }
     });
 }
