@@ -49,7 +49,6 @@ function categorize(obj){
         type:'POST',
     }).done(function(data){
         if(data['data']['code']==0){
-            $("#news-"+data['data']['id']).remove();
             getArticles();
         }
     });
