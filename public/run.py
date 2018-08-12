@@ -12,7 +12,7 @@ def getArticles():
         db = MySQLdb.connect('127.0.0.1','root','','dlm')
         cursor = db.cursor()
         page,limit = 1,2
-	count = 0
+        count = 0
         while page <= limit:
                 result = newsapi.get_everything(sources=sources,language='en',page=page)
                 articles = result['articles']
@@ -25,23 +25,23 @@ def getArticles():
                         %tuple(values)
                         try:
                                 cursor.execute(query)
-				count += 1
+                                count += 1
                         except:
                                 pass
                 db.commit()
                 print('completed=>'+str(page))
                 page+=1
         db.close()
-	f=open('logs.txt','w+')
+        f=open('logs.txt','w+')
         now=datetime.now()
-	content = now.strftime("%c")+' ===> '+str(count)+'\n'
+        content = now.strftime("%c")+' ===> '+str(count)+'\n'
         f.write(content)
         f.close()
-	print content
+        #print(content)
         sleep(300)
         getArticles()
 try:
         getArticles()
 except Exception as e:
-	print e
+	#print e
         pass
