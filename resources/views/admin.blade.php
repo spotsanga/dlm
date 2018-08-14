@@ -54,6 +54,11 @@
                 </form>
                 <div id="myBar"></div>
                 <div class="bar"></div>
+                <div class="text-center">
+                    <b><i>
+                    <div id="alert" class="alert alert-success">Eat...Sleep...Code...Repeat!!!</div>
+                    </b></i>
+                </div>
                 <div style="overflow-x: auto;">
                     <table id='content' class="table table-hover">
                     </table>

@@ -17,6 +17,7 @@ class ArticleFetchLogs extends Migration
             $table->increments('id');
             $table->unsignedInteger('count');
             $table->string('fetched_at');
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
