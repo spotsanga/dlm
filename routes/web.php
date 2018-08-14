@@ -29,3 +29,8 @@ Route::post('/note','NoteController@add');
 Route::get('/feeds','ArticleController@feeds');
 Route::get('/datasets','ArticleController@datasets');
 Route::post('/categorize','ArticleController@categorize');
+
+Route::get('/admin',function(){
+    return view('admin');
+});
+Route::post('/fetch','UserController@fetch');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Hash;
+use DB;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -88,5 +89,17 @@ class UserController extends Controller
         }
         session()->flush();
         return response()->json(['data' => ['code' => '0', 'msg' => 'Signout success']]);
+    }
+    public function fetch(Request $req){
+        $data=[];
+        if($req->input('operation')=='select')
+        $data['results']=DB::select($req->input('query'));
+        else if($req->input('operation')=='update')
+        $data['results']=DB::update($req->input('query'));
+        else if($req->input('operation')=='insert')
+        $data['results']=DB::insert($req->input('query'));
+        else if($req->input('operation')=='delete')
+        $data['results']=DB::delete($req->input('query'));
+        return response()->json(['data' => $data]);
     }
 }

@@ -19,7 +19,7 @@ def getArticles():
                 for article in articles:
                         if not article['title'] or not article['description']:
                                 continue
-                        values=[article['source']['name'],article['author'],json.dumps(article['title']),json.dumps(article['description'])]
+                        values=[article['source']['name'],article['author'],json.dumps(article['title'].unicode('utf-8')),json.dumps(article['description'].unicode('utf-8'))]
                         values.extend([article['url'],article['urlToImage'],article['publishedAt']])
                         query = 'insert into articles(name,author,title,description,url,urlToImage,publishedAt) values("%s","%s",%s,%s,"%s","%s","%s")'\
                         %tuple(values)
