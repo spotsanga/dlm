@@ -12,7 +12,7 @@ sources = 'the-hindu,bbc-news,fox-news,the-times-of-india,cnn,espn'
 def getArticles():
     db = MySQLdb.connect('127.0.0.1', 'root', '', 'dlm')
     cursor = db.cursor()
-    page, limit = 1, 1
+    page, limit = 1, 5
     count = 0
     while page <= limit:
         result = newsapi.get_everything(
@@ -33,7 +33,7 @@ def getArticles():
             except:
                 pass
         db.commit()
-        # print('completed=>'+str(page))
+        print('completed=>'+str(page))
         page += 1
     now = datetime.now().strftime("%b %d %Y %r")
     query = 'insert into article_fetch_logs(fetched_at,count) values("%s","%d")' % (
@@ -41,7 +41,7 @@ def getArticles():
     cursor.execute(query)
     db.commit()
     db.close()
-    sleep(300)
+    sleep(900)
     getArticles()
 
 

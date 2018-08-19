@@ -11,7 +11,7 @@ function getArticles(len=10) {
         move();
         var code = '';
         for (var i = 0; i < articles.length; i++) {
-            code += '<div class="card border-info" style="margin:20px;box-shadow: 7px 7px 5px #aaaaaa;border-radius:7px;" id="news-' + articles[i]['id'] + '">';
+            code += '<div class="card border-info" style="margin-top:10px;box-shadow: 7px 7px 5px #aaaaaa;border-radius:7px;" id="news-' + articles[i]['id'] + '">';
             code += '<div class="code-header bg-info" style="padding:10px;border-top-left-radius:5px;border-top-right-radius:5px;text-transform:capitalize;">';
             code += '<b>' + articles[i]['title'] + '</b>';
             code += '<a style="float:right; color:black;" target="_blank" href="' + articles[i]['url'] + '"><i class="fas fa-external-link-alt"></i></a>';

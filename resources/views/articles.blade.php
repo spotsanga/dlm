@@ -24,6 +24,7 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark sticky-top">
+        <div class="container">
             <span class="navbar-brand">Daily Life Management</span>
             <ul class="nav">
                 <li class="nav-item">
@@ -46,8 +47,9 @@
                     </ul>
                 </li>
             </ul>
+        </div>
     </nav>
-    <div class="container-fluid">
+    <div class="container">
         <input type="hidden" id="id" value="{{$id}}">
         <input type="hidden" id="_token" value="{{csrf_token()}}">
         <div id="myBar">
