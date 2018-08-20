@@ -37,7 +37,7 @@
             <div class="col-lg-9 col-sm">
                 <div class="card border-primary">
                     <div class="card-header border-primary">Inbox</div>
-                    <div class="card-body border-primary" id="messages" style="overflow-x:auto;height:400px">
+                    <div class="card-body border-primary" id="messages" style="overflow-x:auto;height:500px">
                     </div>
                     <div class="card-footer border-primary" style="padding:0;">
                         <form id="send" class="input-group" onsubmit="send();return false;">
