@@ -1,4 +1,4 @@
-# dlm
+# DLM
 Daily Life Management
 
 The intent of this project is to develop a User Interface which helps users to keep track of their daily savings, expenses and to generate a graph for every month and also to provide certain functionalities like searching, sorting etc which helps them  to manage their spending at ease. 
