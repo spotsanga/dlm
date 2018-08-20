@@ -34,10 +34,10 @@
     <br/>
     <div class="container">
         <div class="row">
-            <div class="col-lg-9 col-sm-1">
+            <div class="col-lg-9 col-sm">
                 <div class="card border-primary">
                     <div class="card-header border-primary">Inbox</div>
-                    <div class="card-body border-primary" id="messages" style="overflow-x:auto;height:350px">
+                    <div class="card-body border-primary" id="messages" style="overflow-x:auto;height:400px">
                     </div>
                     <div class="card-footer border-primary" style="padding:0;">
                         <form id="send" class="input-group" onsubmit="send();return false;">
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div id="emojis" class="col-lg-3 col-sm-1" style="overflow-x:auto;">
+            <div id="emojis" class="col-lg-3 col-sm" style="overflow-x:auto;">
             </div>
         </div>
     </div>
