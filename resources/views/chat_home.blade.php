@@ -43,8 +43,8 @@
                         <form id="send" class="input-group" onsubmit="send();return false;">
                             <input type="hidden" id="_token" value="{{csrf_token()}}">
                             <input type="hidden" id="user_id" value="{{$id}}">
-                            <input class="col-11 col-lg-1" style="border-radius:0" id="message" required autocomplete="off">
-                            <input class="col-1 col-lg-1 btn btn-primary" style="border-radius:0" type="submit" value=">">
+                            <input class="col-lg-11 col-sm-1" style="border-radius:0" id="message" required autocomplete="off">
+                            <input class="col-lg-1 col-sm-1 btn btn-primary" style="border-radius:0" type="submit" value=">">
                         </form>
                     </div>
                 </div>
