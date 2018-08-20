@@ -13,6 +13,7 @@ for (var i = 128512; i <= 128591 - col; i += col) {
 var addEmoji = function (emoji) {
     var value = $("#message").val() + emoji.id;
     $("#message").val(value);
+    $("#message").focus();
 };
 var send = function () {
     var data = {};
@@ -24,11 +25,17 @@ var send = function () {
         data: data,
         type: "post",
     }).done(function (data) {
+        $("#messages").animate({
+            scrollTop: $('#messages').prop("scrollHeight")
+        }, 1000);
         $('#send').trigger("reset");
         console.log(data);
     }).fail(function () {
         console.log("Network Error");
     });
+};
+var add_minutes = function (dt, minutes) {
+    return new Date(dt.getTime() + minutes * 60000);
 };
 var last_msg_id = 0;
 var recieve = function () {
@@ -53,7 +60,8 @@ var recieve = function () {
                 code += 'align="right">';
             }
             code += data[i]['message'];
-            code += '<br><small class="text-muted">'+data[i]['created_at']+'</small>';
+            var d = add_minutes(new Date(data[i]['created_at']), 330).toString().split(' ');
+            code += '<br><small class="text-muted">' + d[0]+' '+d[1]+' '+d[2]+' '+d[3]+' '+d[4]+' ' +'</small>';
             code += '</div>';
             code += '</div>';
         }

@@ -34,7 +34,7 @@
     <br/>
     <div class="container">
         <div class="row">
-            <div class="col-9">
+            <div class="col-lg-9 col-sm-1">
                 <div class="card border-primary">
                     <div class="card-header border-primary">Inbox</div>
                     <div class="card-body border-primary" id="messages" style="overflow-x:auto;height:350px">
@@ -43,13 +43,13 @@
                         <form id="send" class="input-group" onsubmit="send();return false;">
                             <input type="hidden" id="_token" value="{{csrf_token()}}">
                             <input type="hidden" id="user_id" value="{{$id}}">
-                            <input class="col-lg-11 col-sm-1" style="border-radius:0" id="message" required autocomplete="off">
+                            <input class="col-lg-11 col-sm-1" style="border-radius:0" id="message" required autocomplete="off" autofocus>
                             <input class="col-lg-1 col-sm-1 btn btn-primary" style="border-radius:0" type="submit" value=">">
                         </form>
                     </div>
                 </div>
             </div>
-            <div id="emojis" class="col-3" style="overflow-x:auto;">
+            <div id="emojis" class="col-lg-3 col-sm-1" style="overflow-x:auto;">
             </div>
         </div>
     </div>
