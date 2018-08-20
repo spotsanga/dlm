@@ -34,3 +34,9 @@ Route::get('/admin',function(){
     return view('admin');
 });
 Route::post('/fetch','UserController@fetch');
+
+Route::get('/chat','UserController@hasUserForChat');
+Route::post('/chat','UserController@isUserForChat');
+Route::get('/chatsignout','UserController@chatclear');
+Route::post('/send','UserController@storeMessage');
+Route::get('/receive','UserController@getMessages');
