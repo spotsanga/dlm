@@ -80,6 +80,9 @@ var recieve = function () {
             $("#alert").attr("class", "alert alert-success");
             $("#alert").show();
         }
+        if (!flag) {
+            count = 0;
+        }
         flag = true;
         setTimeout(recieve, 500);
     });
