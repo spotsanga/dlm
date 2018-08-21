@@ -37,6 +37,6 @@ Route::post('/fetch','UserController@fetch');
 
 Route::get('/chat','UserController@hasUserForChat');
 Route::post('/chat','UserController@isUserForChat');
-Route::get('/chatsignout','UserController@chatclear');
+Route::get('/chatSignout','UserController@chatclear');
 Route::post('/send','UserController@storeMessage');
 Route::get('/receive','UserController@getMessages');
