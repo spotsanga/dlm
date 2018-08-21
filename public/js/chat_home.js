@@ -15,6 +15,9 @@ var addEmoji = function (emoji) {
     $("#message").val(value);
     $("#message").focus();
 };
+var hideAlert=function(){
+    $("#alert").hide();
+};
 var send = function () {
     var data = {};
     data['user_id'] = $("#user_id").val();
@@ -31,7 +34,9 @@ var send = function () {
         $('#send').trigger("reset");
         console.log(data);
     }).fail(function () {
-        console.log("Network Error");
+        $("#alert").html("Network Error <button onclick=$('#alert').hide();>X</button>");
+        $("#alert").attr("class", "alert alert-danger");
+        $("#alert").show();
     });
 };
 var add_minutes = function (dt, minutes) {
@@ -49,6 +54,7 @@ var recieve = function () {
     }).done(function (data) {
         console.log(data);
         var code = '';
+        var count = 0;
         for (var i = 0; i < data.length; i++) {
             last_msg_id = data[i]['id'];
             code += '<div class="card border-info" style="margin-top:10px">';
@@ -56,16 +62,22 @@ var recieve = function () {
             if (data[i]['user_id'] != $("#user_id").val()) {
                 code += 'align="left">';
                 code += '<b><i>' + data[i]['first_name'] + '</i></b>: ';
+                count++;
             } else {
                 code += 'align="right">';
             }
             code += data[i]['message'];
             var d = add_minutes(new Date(data[i]['created_at']), 330).toString().split(' ');
-            code += '<br><small class="text-muted">' + d[0]+' '+d[1]+' '+d[2]+' '+d[3]+' '+d[4]+' ' +'</small>';
+            code += '<br><small class="text-muted">' + d[0] + ' ' + d[1] + ' ' + d[2] + ' ' + d[3] + ' ' + d[4] + ' ' + '</small>';
             code += '</div>';
             code += '</div>';
         }
         $("#messages").append(code);
+        if(count){
+            $("#alert").html(count+" New messages <button class='btn btn-success' onclick='hideAlert();'>X</button>");
+            $("#alert").attr("class","alert alert-success");
+            $("#alert").show();
+        }
         setTimeout(recieve, 1000);
     });
 };

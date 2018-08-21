@@ -36,6 +36,8 @@
                         </nav>
                     </div>
                     <div class="card-body border-primary">
+                        <div id="alert" style="display:none;text-align:center">
+                        </div>
                         <div id="messages" style="overflow-x:auto;height:450px">
                         </div>
                     </div>
