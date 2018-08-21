@@ -15,7 +15,10 @@ var addEmoji = function (emoji) {
     $("#message").val(value);
     $("#message").focus();
 };
-var hideAlert=function(){
+var count = 0;
+var flag = false;
+var hideAlert = function () {
+    count = 0;
     $("#alert").hide();
 };
 var send = function () {
@@ -54,7 +57,6 @@ var recieve = function () {
     }).done(function (data) {
         console.log(data);
         var code = '';
-        var count = 0;
         for (var i = 0; i < data.length; i++) {
             last_msg_id = data[i]['id'];
             code += '<div class="card border-info" style="margin-top:10px">';
@@ -73,12 +75,13 @@ var recieve = function () {
             code += '</div>';
         }
         $("#messages").append(code);
-        if(count){
-            $("#alert").html(count+" New messages <button class='btn btn-success' onclick='hideAlert();'>X</button>");
-            $("#alert").attr("class","alert alert-success");
+        if (flag && count) {
+            $("#alert").html(count + " New messages <button class='btn btn-success' onclick='hideAlert();'>X</button>");
+            $("#alert").attr("class", "alert alert-success");
             $("#alert").show();
         }
-        setTimeout(recieve, 1000);
+        flag = true;
+        setTimeout(recieve, 500);
     });
 };
 recieve();
