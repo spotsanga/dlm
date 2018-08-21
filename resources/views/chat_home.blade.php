@@ -38,7 +38,7 @@
                     <div class="card-body border-primary">
                         <div id="alert" style="display:none;text-align:center">
                         </div>
-                        <div id="messages" style="overflow-x:auto;height:450px">
+                        <div id="messages" style="overflow-y:auto;height:450px">
                         </div>
                     </div>
                     <div class="card-footer border-primary" style="padding:0;">

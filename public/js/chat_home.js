@@ -82,6 +82,9 @@ var recieve = function () {
         }
         if (!flag) {
             count = 0;
+            $("#messages").animate({
+                scrollTop: $('#messages').prop("scrollHeight")
+            }, 1000);
         }
         flag = true;
         setTimeout(recieve, 500);
