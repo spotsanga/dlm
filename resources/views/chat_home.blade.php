@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <div>
+    <div style="display:none">
         <audio id="alerttone" src="music/alerttone.mp3" type="audio/mp3"/>
     </div>
     <div class="container">
