@@ -15,7 +15,8 @@ var addEmoji = function (emoji) {
     $("#message").val(value);
     $("#message").focus();
 };
-var count = 0;
+var count = 0,
+    prev = 0;
 var flag = false;
 var hideAlert = function () {
     count = 0;
@@ -76,12 +77,13 @@ var recieve = function () {
         }
         $("#messages").append(code);
         if (flag && count) {
-            document.getElementById("alerttone").play();
-            setTimeout(function(){document.getElementById("alerttone").pause();},1000);
+            if (count != prev)
+                document.getElementById("alerttone").play();
             $("#alert").html(count + " New messages <button class='btn btn-success' onclick='hideAlert();'>X</button>");
             $("#alert").attr("class", "alert alert-success");
             $("#alert").show();
         }
+        prev = count;
         if (!flag) {
             count = 0;
             $("#messages").animate({
