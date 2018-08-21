@@ -17,7 +17,7 @@
 
 <body>
     <div>
-        <audio id="alerttone" src="music/alerttone.mp3" type="audio/mp3" controls/>
+        <audio id="alerttone" src="music/alerttone.mp3" type="audio/mp3"/>
     </div>
     <div class="container">
         <div class="row">
