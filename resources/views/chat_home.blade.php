@@ -16,6 +16,9 @@
 </head>
 
 <body>
+    <div>
+        <audio id="alerttone" src="music/alerttone.mp3" type="audio/mp3" controls/>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-sm">
@@ -29,7 +32,7 @@
                                                             {{$first_name}}&nbsp;{{$last_name}}
                                                         </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href=javascript:signout();>Sign-out</a></li>
+                                        <li><a href="chatSignout">Sign-out</a></li>
                                     </ul>
                                 </li>
                             </ul>

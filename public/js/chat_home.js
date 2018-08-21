@@ -76,6 +76,7 @@ var recieve = function () {
         }
         $("#messages").append(code);
         if (flag && count) {
+            document.getElementById("alerttone").play();
             $("#alert").html(count + " New messages <button class='btn btn-success' onclick='hideAlert();'>X</button>");
             $("#alert").attr("class", "alert alert-success");
             $("#alert").show();
