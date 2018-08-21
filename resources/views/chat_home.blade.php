@@ -16,34 +16,35 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark sticky-top">
-        <div class="container">
-            <span class="navbar-brand">HereChat</span>
-            <ul class="nav justify-content-end">
-                <li class="nav-item dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                {{$first_name}}&nbsp;{{$last_name}}
-                            </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="chatsignout">Sign-out</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <br/>
     <div class="container">
         <div class="row">
-            <div class="col-lg-9 col-sm">
+            <div class="col-sm">
                 <div class="card border-primary">
-                    <div class="card-header border-primary">Inbox</div>
-                    <div class="card-body border-primary" id="messages" style="overflow-x:auto;height:450px">
+                    <div class="card-header border-primary">
+                        <nav class="navbar">
+                            <span class="navbar-brand">ChatBot</span>
+                            <ul class="nav justify-content-end">
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                                            {{$first_name}}&nbsp;{{$last_name}}
+                                                        </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href=javascript:signout();>Sign-out</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="card-body border-primary">
+                        <div id="messages" style="overflow-x:auto;height:450px">
+                        </div>
                     </div>
                     <div class="card-footer border-primary" style="padding:0;">
-                        <form id="send" class="input-group" onsubmit="send();return false;">
+                        <form id="send" class="input-group" onsubmit="send();return false;" style="margin:0">
                             <input type="hidden" id="_token" value="{{csrf_token()}}">
                             <input type="hidden" id="user_id" value="{{$id}}">
-                            <input class="col-lg-11 col-sm-1" style="border-radius:0" placeholder="Type your message here..." id="message" required autocomplete="off" autofocus>
+                            <input class="col-lg-11 col-sm-1" style="border-radius:0" placeholder="Type your message here..." id="message" required autocomplete="off"
+                                autofocus>
                             <input class="col-lg-1 col-sm-1 btn btn-primary" style="border-radius:0" type="submit" value=">">
                         </form>
                     </div>

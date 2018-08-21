@@ -16,15 +16,11 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark sticky-top">
-        <div class="container"><span class="navbar-brand">HereChat</span></div>
-    </nav>
-    <br/>
     <div id="login">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="card border-primary">
-                    <div class="card-header border-primary">Login</div>
+                    <div class="card-header border-primary">ChatBot</div>
                     <div class="card-body">
                         <form class="form-group" action="chat" method="POST">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -34,7 +30,7 @@
                             <label for="pwd">Password</label>
                             <input class="form-control" id="pwd" name="password" type="password" required>
                             <br/>
-                            <input class="btn btn-primary" type="submit" value="Signin">
+                            <input class="btn btn-primary" type="submit" value="Login">
                         </form>
                     </div>
                 </div>

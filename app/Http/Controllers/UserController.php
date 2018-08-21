@@ -150,7 +150,7 @@ class UserController extends Controller
     public function getMessages(Request $req)
     {
         $messages = Message::join('users', 'users.id', '=', 'messages.user_id')->where('messages.id', '>', $req->input('id'))
-            ->select('messages.id', 'messages.user_id', 'first_name', 'last_name', 'message', 'messages.created_at')->get();
+            ->select('messages.id', 'messages.user_id', 'first_name', 'last_name', 'message', 'messages.created_at')->orderBy('created_at')->get();
         return response()->json($messages);
     }
 }
