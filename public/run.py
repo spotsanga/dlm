@@ -25,7 +25,7 @@ def getArticles():
                 article['title']), json.dumps(article['description'])]
             values.extend(
                 [article['url'], article['urlToImage'], article['publishedAt']])
-            query = 'insert into articles(name,author,title,description,url,urlToImage,publishedAt) values("%s","%s",%s,%s,"%s","%s","%s")'\
+            query = 'insert into articles(source,author,title,description,url,urlToImage,publishedAt) values("%s","%s",%s,%s,"%s","%s","%s")'\
                 % tuple(values)
             try:
                 cursor.execute(query)
@@ -33,7 +33,7 @@ def getArticles():
             except:
                 pass
         db.commit()
-        print('completed=>'+str(page))
+        #print('completed=>'+str(page))
         page += 1
     now = datetime.now().strftime("%b %d %Y %r")
     query = 'insert into article_fetch_logs(fetched_at,count) values("%s","%d")' % (

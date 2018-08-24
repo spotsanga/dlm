@@ -1,9 +1,0 @@
-Laravel development server started: <http://127.0.0.1:8000>
-[Wed Aug 22 19:12:16 2018] 127.0.0.1:52676 [200]: /js/chat_home.js
-[Wed Aug 22 19:12:16 2018] 127.0.0.1:52690 [200]: /music/alerttone.mp3
-[Wed Aug 22 19:12:17 2018] 127.0.0.1:52692 [200]: /images/icon.jpg
-[Wed Aug 22 19:12:24 2018] 127.0.0.1:52750 [200]: /js/chat_home.js
-[Wed Aug 22 19:12:24 2018] 127.0.0.1:52754 [200]: /music/alerttone.mp3
-[Wed Aug 22 19:12:24 2018] 127.0.0.1:52756 [200]: /images/icon.jpg
-[Wed Aug 22 19:32:30 2018] 127.0.0.1:60926 [200]: /favicon.ico
-[Wed Aug 22 19:32:33 2018] 127.0.0.1:60946 [200]: /images/icon.jpg
