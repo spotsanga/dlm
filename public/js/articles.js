@@ -3,11 +3,11 @@ function getArticles() {
     data['id'] = $("#id").val();
     $.ajax({
         type: 'GET',
-        data:data,
+        data: data,
         url: 'feeds',
     }).done(function (res) {
         var articles = res['data']['articles'];
-        if (!articles.length){
+        if (!articles.length) {
             return;
         }
         move();
@@ -19,7 +19,7 @@ function getArticles() {
             code += '<td>' + (articles[i]['description'] || "") + '</td>';
             var date = new Date(articles[i]['publishedAt']);
             code += '<td>' + date.toDateString() + "</td>";
-            code += '<td>' + articles[i]['name'] + '</td>';
+            code += '<td>' + articles[i]['source'] + '</td>';
             code += '<td><a target="_blank" href="' + articles[i]['url'] + '"><i class="fas fa-external-link-alt"></i></td>';
             code += '</tr>';
         }
