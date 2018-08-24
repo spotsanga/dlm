@@ -18,8 +18,8 @@ function getArticles(len=10) {
             code += '</div>';
             code += '<div class="code-body"  style=" padding:10px;" ><p class="card-text">' + articles[i]['description'] + ' </p></div>';
             code += '<div class="code-footer">';
-            code += '<form class="row" style="padding-left:10px;padding-right:10px;text-transform:capitalize;" onsubmit="categorize(this);return false;"; id="' + articles[i]['id'] + '">';
-            code += '<div class="col-11">';
+            code += '<form style="padding-left:10px;padding-right:10px;text-transform:capitalize;" onsubmit="categorize(this);return false;"; id="' + articles[i]['id'] + '">';
+            code += '<div class="">';
             for (var j = 0; j < categories.length; j++) {
                 code += '<label class="checkbox-inline" style="padding-right:10px;">';
                 code += '<input type="checkbox" name="categorie_id" value="' + categories[j]['id'] + '">';
@@ -27,8 +27,8 @@ function getArticles(len=10) {
                 code += '</label>';
             }
             code +='</div>';
-            code += '<div class="col-1">';
-            code += '<button type="submit" style="border-radius:50%;" class="btn btn-outline-success">';
+            code += '<div class="">';
+            code += '<button type="submit" style="width:100%" class="btn btn-outline-success">';
             code += '<font><i class="fas fa-angle-right"></i></font>';
             code += '</button>';
             code += '</div>';
