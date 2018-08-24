@@ -56,7 +56,7 @@
                 <div class="bar"></div>
                 <div class="text-center">
                     <b><i>
-                    <div id="alert" class="alert alert-success">Eat...Sleep...Code...Repeat!!!</div>
+                    <div id="alert" class="alert alert-success">Code...Eat...Sleep...Repeat!!!</div>
                     </b></i>
                 </div>
                 <div style="overflow-x: auto;">

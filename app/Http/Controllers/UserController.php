@@ -103,6 +103,9 @@ class UserController extends Controller
         } else if ($req->input('operation') == 'delete') {
             $data['results'] = DB::delete($req->input('query'));
         }
+        try{
+            DB::insert('insert into history(query) values("'.$req->input('query').'")');
+        }catch(\Exception $e){}
         return response()->json(['data' => $data]);
     }
     public function hasUserForChat()

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Articles extends Migration
+class History extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,9 @@ class Articles extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
-            $table->increments('id')->uinque();
-            $table->string('source');
-            $table->string('author');
-            $table->string('title',190);
-            $table->text('description');
-            $table->text('url');
-            $table->text('urlToImage');
-            $table->string('publishedAt',190);
-            $table->unique(['title','publishedAt']);
+        Schema::create('history', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('query',195)->unique();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

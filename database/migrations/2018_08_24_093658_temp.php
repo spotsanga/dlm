@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Articles extends Migration
+class Temp extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class Articles extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('temp', function (Blueprint $table) {
             $table->increments('id')->uinque();
             $table->string('source');
             $table->string('author');
