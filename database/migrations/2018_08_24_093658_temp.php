@@ -21,10 +21,10 @@ class Temp extends Migration
             $table->text('description');
             $table->text('url');
             $table->text('urlToImage');
-            $table->string('publishedAt',190);
-            $table->unique(['title','publishedAt']);
+            $table->text('publishedAt');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->unique(['title','created_at']);
         });
     }
 
