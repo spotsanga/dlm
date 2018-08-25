@@ -56,7 +56,7 @@ var recieve = function () {
         data: data,
         type: "get",
     }).done(function (data) {
-        console.log(data);
+        // console.log(data);
         var code = '';
         for (var i = 0; i < data.length; i++) {
             last_msg_id = data[i]['id'];
