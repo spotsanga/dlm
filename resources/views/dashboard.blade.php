@@ -13,6 +13,8 @@
         crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
     <link rel="icon" href="images/icon.jpg">
 </head>
 
@@ -49,13 +51,13 @@
         <div id="alert" align="center" style="height:30px;display:none">
         </div>
         <ul class="nav nav-tabs row text-center" id="myTab" role="tablist">
-            <li class="nav-item col">
+            <li class="nav-item col-lg-4 col-md-4 col-sm-12">
                 <a class="nav-link active" id="expense-tab" data-toggle="tab" href="#expense" role="tab" aria-controls="expense" aria-selected="true">Expenses</a>
             </li>
-            <li class="nav-item col">
+            <li class="nav-item col-lg-4 col-md-4 col-sm-12">
                 <a class="nav-link" id="todo-tab" data-toggle="tab" href="#todo" role="tab" aria-controls="todo" aria-selected="false">Todo</a>
             </li>
-            <li class="nav-item col">
+            <li class="nav-item col-lg-4 col-md-4 col-sm-12">
                 <a class="nav-link" id="expense_graph-tab" data-toggle="tab" href="#expense_graph" role="tab" aria-controls="expense_graph"
                     aria-selected="false">Expense Graph</a>
             </li>
@@ -65,16 +67,16 @@
                 <br>
                 <form id="expense" class="form">
                     <div class="input-group row">
-                        <select id="category" class="form-control col" style="height:40px;">
+                        <select id="category" class="form-control col-lg-2 col-md-2 col-sm-6" style="height:40px;">
                                     <option>Food</option>
                                     <option>Travel</option>
                                     <option>Bills</option>
                                     <option>Recharge</option>
                                 </select>
-                        <input id="money_spent" placeholder="Money spent" type="number" class="form-control col" min="0" required>
-                        <input id="spent_at_date" type="date" class="form-control col" required>
-                        <input id="spent_at_time" type="time" class="form-control col" required>
-                        <select id="spent_at_merediem" class="form-control col" style="height:40px;">
+                        <input id="money_spent" placeholder="Money spent" type="number" class="form-control col-lg-2 col-md-2 col-sm-6" min="0" required>
+                        <input id="spent_at_date" type="date" class="form-control col-lg-2 col-md-2 col-sm-5" required>
+                        <input id="spent_at_time" type="time" class="form-control col-lg-2 col-md-2 col-sm-5" required>
+                        <select id="spent_at_merediem" class="form-control col-lg-2 col-md-2 col-sm-2" style="height:40px;">
                                     <option>AM</option>
                                     <option>PM</option>
                                 </select>
@@ -102,7 +104,16 @@
                 <div class="row" id="notes">
                 </div>
             </div>
-            <div class="tab-pane fade" id="expense_graph" role="tabpanel" aria-labelledby="expense_graph-tab">...</div>
+            <div class="tab-pane fade" id="expense_graph" role="tabpanel" aria-labelledby="expense_graph-tab">
+                <div class="row">
+                    <div class="col-lg-5 col-md-12 col-sm-12">
+                        <div id="piechart"></div>
+                    </div>
+                    <div class="col-lg-7 col-md-12 col-sm-12">
+                        <canvas id="graph"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

@@ -1,3 +1,65 @@
+var drawPieChart = function (expenses) {
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(function () {
+        var total = {};
+        for (var i = 0; i < expenses.length; i++) {
+            var category = expenses[i]['category'],
+                money_spent = parseFloat(expenses[i]['money_spent']);
+            if (category in total) {
+                total[category] += money_spent;
+            } else {
+                total[category] = money_spent;
+            }
+        }
+        var content = [
+            ['Expenses', 'Spent per Month']
+        ];
+        var i = 1;
+        for (category in total) {
+            content[i++] = [category, total[category]];
+        }
+        var data = google.visualization.arrayToDataTable(content);
+        var options = {
+            'title': 'This Month',
+            'width': 550,
+            'height': 400
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+        drawGraph(total);
+    });
+};
+var drawGraph = function (total) {
+    var labels = Object.keys(total);
+    var values=[];
+    labels.forEach(function(key){
+        values.push(total[key]);
+    });
+    var ctx = document.getElementById("graph").getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '# of Money spent',
+                data: values,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+};
+
 function getExpenses() {
     var data = {};
     data['id'] = $("#id").val();
@@ -14,7 +76,7 @@ function getExpenses() {
             for (var i = expenses.length - 1; i >= 0; i--) {
                 var expense = expenses[i];
                 code += '\
-                <div class="col-lg-3 col-md-3 col-sm-1">\
+                <div class="col-lg-3 col-md-4 col-sm-12">\
                 <div class="card border-primary" style="margin-top:10px;box-shadow: 7px 7px 5px #aaaaaa;">\
                     <div class="card-header">' + expense['category'] + '</div>\
                     <div class="card-body text-primary">\
@@ -32,6 +94,7 @@ function getExpenses() {
                 ';
             }
             $("#expenses").html(code);
+            drawPieChart(res['expenses']);
         } else {
             location.replace("/");
         }
@@ -55,7 +118,7 @@ function getNotes() {
             for (var i = notes.length - 1; i >= 0; i--) {
                 var note = notes[i];
                 code += '\
-                <div class="col-lg-3 col-md-3 col-sm-1">\
+                <div class="col-lg-3 col-md-4 col-sm-12">\
                 <div class="card border-primary" style="margin-top:10px;box-shadow: 7px 7px 5px #aaaaaa;">\
                     <div class="card-header">' + note['title'] + '</div>\
                     <div class="card-body text-primary">\
