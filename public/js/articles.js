@@ -2,6 +2,9 @@ var left = 1,
     page = 1,
     right = 3;
 var getArticlesByPage = function (pageNo) {
+    $('html, body').animate({
+        scrollTop: $("#myBar").offset().top
+    }, 500);
     page = pageNo;
     getArticles();
     $(".pages").attr("class", "pages page-item");
@@ -36,10 +39,10 @@ var pagesDec = function () {
     getArticlesByPage(page - 1);
 };
 var checkForDisable = function () {
-    if(page==1){
-        $("#prev-li").attr("class","page-item disabled");
-    }else{
-        $("#prev-li").attr("class","page-item");
+    if (page == 1) {
+        $("#prev-li").attr("class", "page-item disabled");
+    } else {
+        $("#prev-li").attr("class", "page-item");
     }
 };
 
