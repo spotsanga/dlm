@@ -3,7 +3,7 @@ var left = 1,
     right = 3;
 var getArticlesByPage = function (pageNo) {
     $('html, body').animate({
-        scrollTop: $("#myBar").offset().top
+        scrollTop: $("body").offset().top
     }, 500);
     page = pageNo;
     getArticles();
