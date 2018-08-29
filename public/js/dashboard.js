@@ -33,11 +33,13 @@ var drawPieChart = function (expenses) {
 };
 var drawGraph = function (total) {
     var labels = Object.keys(total);
-    var values=[];
-    labels.forEach(function(key){
+    var values = [];
+    labels.forEach(function (key) {
         values.push(total[key]);
     });
-    var ctx = document.getElementById("graph").getContext('2d');
+    var canvas = document.getElementById("graph");
+    var ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     new Chart(ctx, {
         type: 'bar',
         data: {
@@ -180,7 +182,7 @@ $("#expense").on("submit", function () {
         'item_cost': 10
     }];
     data['_token'] = $("#_token").val();
-    console.log(JSON.stringify(data));
+    // console.log(JSON.stringify(data));
     $.ajax({
         type: "POST",
         data: data,
