@@ -30,7 +30,7 @@ class ArticleController extends Controller
         }
         $data['code'] = '0';
         $data['articles'] = Article::whereNotIn('id', ArticleToCategoryMapping::select('article_id')->get())->orderBy('publishedAt', 'desc')->offset(0)->limit(10)->select('id', 'title', 'description', 'url')->get();
-        $data['categories'] = Category::select('id', 'category')->get();
+        $data['categories'] = Category::select('category')->get();
         return response()->json(['data' => $data]);
     }
     public function categorize(Request $req)
@@ -42,11 +42,16 @@ class ArticleController extends Controller
         }
         $data['code'] = 0;
         $data['message'] = 'success';
-        $data['id'] = $req->input('categories')[0]['article_id'];
-        foreach ($req->input('categories') as $category) {
+        $data['id'] = $article_id = $req->input('article_id');
+        foreach ($req->input('categorized_list') as $category) {
             try {
-                ArticleToCategoryMapping::create($category);
-            } catch (\Exception $e) {}
+                $category_id = Category::firstOrCreate(['category' => $category['category']])['id'];
+                ArticleToCategoryMapping::create(['article_id' => $article_id, 'category_id' => $category_id]);
+            } catch (\Exception $e) {
+                $data['code'] = 1;
+                $data['message'] = $e;
+                break;
+            }
         }
         return response()->json(['data' => $data]);
     }

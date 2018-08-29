@@ -1,19 +1,3 @@
-var shown;
-$("#show-expense").on("click", function () {
-    if (shown != 0) {
-        $(".form").hide();
-        shown = 0;
-    }
-    $("#expense").toggle();
-});
-$("#show-note").on("click", function () {
-    if (shown != 1) {
-        $(".form").hide();
-        shown = 1;
-    }
-    $("#note").toggle();
-});
-
 function getExpenses() {
     var data = {};
     data['id'] = $("#id").val();
@@ -25,23 +9,29 @@ function getExpenses() {
         // console.log(JSON.stringify(res));
         var res = res['data'];
         if (res['code'] == "0") {
-            var html = '<thead class="thead-light">';
-            html += "<tr><th>#</th><th>Category</th><th>Money Spent</th><th>Spent at</th></tr>";
-            html += "</thead>";
-            $("#expenses").html(html);
             var expenses = res['expenses'];
-            var code = "<tbody>";
+            var code = "";
             for (var i = expenses.length - 1; i >= 0; i--) {
                 var expense = expenses[i];
-                code += "<tr>"
-                code += "<td>" + expense['id'] + "</td>";
-                code += "<td>" + expense['category'] + "</td>";
-                code += "<td>" + expense['money_spent'] + "</td>";
-                code += "<td>" + expense['spent_at_date'] + " " + expense['spent_at_time'] + " " + expense['spent_at_merediem'] + "</td>";
-                code += "</tr>";
+                code += '\
+                <div class="col-lg-3 col-md-3 col-sm-1">\
+                <div class="card border-primary" style="margin-top:10px;box-shadow: 7px 7px 5px #aaaaaa;">\
+                    <div class="card-header">' + expense['category'] + '</div>\
+                    <div class="card-body text-primary">\
+                        <p class="card-text">\
+                        Money Spent : ' + expense['money_spent'] + '\
+                        </p>\
+                    </div>\
+                    <div class="card-footer">\
+                        <small class="text-muted">\
+                            Spent at : ' + expense['spent_at_date'] + " " + expense['spent_at_time'] + " " + expense['spent_at_merediem'] + '\
+                        </small>\
+                    </div>\
+                </div>\
+                </div>\
+                ';
             }
-            code += "<tbody>";
-            $("#expenses").append(code);
+            $("#expenses").html(code);
         } else {
             location.replace("/");
         }
@@ -60,21 +50,24 @@ function getNotes() {
         // console.log(JSON.stringify(res));
         var res = res['data'];
         if (res['code'] == "0") {
-            var html = '<thead class="thead-light">';
-            html += "<tr><th>#</th><th>Title</th><th>Description</th><th>Created at</th></tr>";
-            html += "</thead>";
-            $("#notes").html(html);
             var notes = res['notes'];
-            var code = "<tbody>";
+            var code = "";
             for (var i = notes.length - 1; i >= 0; i--) {
-                code += "<tr>"
-                for (key in notes[i]) {
-                    code += "<td>" + notes[i][key] + "</td>";
-                }
-                code += "</tr>";
+                var note = notes[i];
+                code += '\
+                <div class="col-lg-3 col-md-3 col-sm-1">\
+                <div class="card border-primary" style="margin-top:10px;box-shadow: 7px 7px 5px #aaaaaa;">\
+                    <div class="card-header">' + note['title'] + '</div>\
+                    <div class="card-body text-primary">\
+                        <p class="card-text">\
+                        ' + note['description'] + '\
+                        </p>\
+                    </div>\
+                </div>\
+                </div>\
+                ';
             }
-            code += "</tbody>";
-            $("#notes").append(code);
+            $("#notes").html(code);
         } else {
             location.replace("/");
         }

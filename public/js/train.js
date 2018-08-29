@@ -1,4 +1,19 @@
-function getArticles(len = 10) {
+var addCategoryInList = function (id) {
+    var category = $("#input-category-" + id).val();
+    if (!category.length) return;
+    $("#input-category-" + id).val("");
+    var code = '\
+        <div class="col-lg-2 col-sm-1">\
+            <label class="checkbox-inline" style="padding-right:10px;" contentEditable="false">\
+                <input type="checkbox" name="categorie_id" value="' + category + '" checked onclick=$(this).parent().parent().remove()>\
+                <i>' + category + '</i>\
+            </label>\
+        </div>\
+    ';
+    $("#categorized_list-" + id).append(code);
+};
+
+function getArticles() {
     var data = {};
     data['id'] = $("#id").val();
     $.ajax({
@@ -11,56 +26,45 @@ function getArticles(len = 10) {
         move();
         var code = '',
             articles_len = articles.length,
-            categories_len = categories.length,
-            col = 6;
+            categories_len = categories.length;
         for (var i = 0; i < articles_len; i++) {
-            code += '<div class="card border-info" style="margin-top:10px;box-shadow: 7px 7px 5px #aaaaaa;border-radius:7px;" id="news-' + articles[i]['id'] + '">';
-            code += '   <div class="card-header bg-info" style="padding:10px;border-top-left-radius:5px;border-top-right-radius:5px;text-transform:capitalize;">';
-            code += '       <b>' + articles[i]['title'] + '</b>';
-            code += '       <a style="float:right; color:black;" target="_blank" href="' + articles[i]['url'] + '"><i class="fas fa-external-link-alt"></i></a>';
-            code += '   </div>';
-            code += '   <div class="card-body"  style=" padding:10px;" >';
-            code += '       <p class="card-text">' + articles[i]['description'] + ' </p>';
-            code += '       <form style="padding-left:10px;padding-right:10px;text-transform:capitalize;" onsubmit="categorize(this);return false;"; id="' + articles[i]['id'] + '">';
-            for (var j = 0; j < categories_len; j += col) {
-                code += '       <div class="row">';
-                for (var k = j; k < j + col && k < categories_len; k++) {
-                    code += '       <div class="col-lg-2 col-md-2 col-sm-1">';
-                    code += '           <label class="checkbox-inline" style="padding-right:10px;">';
-                    code += '               <input type="checkbox" name="categorie_id" value="' + categories[k]['id'] + '">';
-                    code += '               <i>' + categories[k]['category'] + '</i>';
-                    code += '           </label>';
-                    code += '       </div>';
-                }
-                code += '       </div>';
+            code += '\
+            <div class="card border-info" style="margin-top:10px;box-shadow: 7px 7px 5px #aaaaaa;" id="news-' + articles[i]['id'] + '">\
+                <div class="card-header bg-info" style="padding:10px;text-transform:capitalize;">\
+                    <b>' + articles[i]['title'] + '</b>\
+                    <a style="float:right; color:black;" target="_blank" href="' + articles[i]['url'] + '"><i class="fas fa-external-link-alt"></i></a>\
+                </div>\
+                <div class="card-body"  style=" padding:10px;" >\
+                    <p class="card-text">' + articles[i]['description'] + ' </p>\
+                    <form style="padding:10px;margin:0;text-transform:capitalize;" onsubmit="categorize(this);return false;" id="' + articles[i]['id'] + '">\
+                        <div class="row">\
+                            <div class="col-11">\
+                                <div class="input-group">\
+                                    <input id="input-category-' + articles[i]['id'] + '" class="form-control" placeholder="Categories List" list="categories_list">\
+                                    <datalist id="categories_list">';
+            for (var j = 0; j < categories_len; j++) {
+                code += '               <option>' + categories[j]['category'] + '</option>';
             }
-            // code += '<div class="row">';
-            // code += '   <div class="col-lg-4 col-sm-1">';
-            // code += '       <input list="categories" class="form-control">';
-            // code += '       <datalist id="categories">';
-            // for (var j = 0; j < categories_len; j++) {
-            //     code += '       <option>' + categories[j]['category'] + '</option>';
-            // }
-            // code += '       </datalist>'
-            // code += '   </div>';
-            // code += '   <div class="col-lg-4 col-sm-1">';
-            // code += '       <select id="categorized_in" class="form-control">';
-            // code += '       </select>';
-            // code += '   </div>'
-            // code += '   <div class="col-lg-4 col-sm-1">';
-            // code += '       <button type="submit" style="width:100%" class="btn btn-outline-success">';
-            // code += '           <font><i class="fas fa-angle-right"></i></font>';
-            // code += '       </button>';
-            // code += '   </div>';
-            // code += '</div>';
-            code += '           <div class="row">';
-            code += '               <button type="submit" style="width:100%" class="btn btn-outline-success">';
-            code += '               <font><i class="fas fa-angle-right"></i></font>';
-            code += '               </button>';
-            code += '           </div>';
-            code += '       </form>';
-            code += '   </div>';
-            code += '</div>';
+            code += '               </datalist>\
+                                    <div class="input-group-append">\
+                                        <button class="btn btn-outline-success" onclick="addCategoryInList(this.id)" id="' + articles[i]['id'] + '" type="button">\
+                                            <i class="fas fa-plus"></i>\
+                                        </button>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                            <div class="col-1">\
+                                <button type="submit" style="width:100%" class="btn btn-outline-success">\
+                                    <font size=5px"><i class="fas fa-angle-right"></i></font>\
+                                </button>\
+                            </div>\
+                        </div>\
+                        <div class="row" id="categorized_list-' + articles[i]['id'] + '">\
+                        </div>\
+                    </form>\
+                </div>\
+            </div>\
+            ';
         }
         $("#news").html(code);
     });
@@ -69,27 +73,31 @@ function getArticles(len = 10) {
 getArticles();
 
 function categorize(obj) {
-    var con = $(obj).serializeArray();
-    if (!con.length) return;
+    var content = $(obj).serializeArray();
+    if (!content.length) return;
     var data = {
-        'categories': []
+        'article_id': obj.id,
+        'categorized_list': []
     };
-    for (var i = 0; i < con.length; i++) {
-        data['categories'][i] = {
-            'article_id': obj.id,
-            'category_id': con[i]['value']
+    for (var i = 0; i < content.length; i++) {
+        data['categorized_list'][i] = {
+            'category': content[i]['value']
         };
     }
     data['id'] = $("#id").val();
     data['_token'] = $("#_token").val();
+    console.log(data);
     $.ajax({
         data: data,
         url: 'categorize',
         type: 'POST',
     }).done(function (data) {
+        console.log(data);
         if (data['data']['code'] == 0) {
             getArticles();
         }
+    }).fail(function (res) {
+        console.log(ress);
     });
 }
 

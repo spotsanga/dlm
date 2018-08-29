@@ -16,14 +16,6 @@
     <link rel="icon" href="images/icon.jpg">
 </head>
 
-<style>
-    .showing-expense,
-    .showing-note {
-        height: 200px;
-        overflow-y: scroll;
-    }
-</style>
-
 <body>
     <nav class="navbar navbar-dark bg-dark sticky-top">
         <div class="container">
@@ -56,52 +48,61 @@
         <input type="hidden" id="_token" value="{{csrf_token()}}">
         <div id="alert" align="center" style="height:30px;display:none">
         </div>
-        <table class="table">
-            <td>
-                <button id="show-expense" class="btn btn-outline-success" style="width:100%"><i class="fas fa-plus"></i>&nbsp;Expense</button>
-            </td>
-            <td>
-                <button id="show-note" class="btn btn-outline-success" style="width:100%"> <i class="fas fa-plus"></i>&nbsp;Note</button>
-            </td>
-        </table>
-        <form id="expense" class="form form-inline" style="width:100%;display:none">
-            <fieldset>
-                <legend>Add Expense</legend>
-                <div class="input-group" style="width:100%">
-                    <select id="category" class="form-control" style="width:20%">
-                    <option>Food</option>
-                    <option>Travel</option>
-                    <option>Bills</option>
-                    <option>Recharge</option>
-                </select>
-                    <input id="money_spent" placeholder="Money spent" type="number" class="form-control" min="0" required style="width:20%">
-                    <input id="spent_at_date" type="date" class="form-control" required style="width:20%">
-                    <input id="spent_at_time" type="time" class="form-control" required style="width:20%">
-                    <select id="spent_at_merediem" class="custom-select form-control" style="width:10%">
-                    <option>AM</option>
-                    <option>PM</option>
-                </select>
-                    <input type="submit" value="Add" class="btn btn-outline-success" style="width:10%">
+        <ul class="nav nav-tabs row text-center" id="myTab" role="tablist">
+            <li class="nav-item col">
+                <a class="nav-link active" id="expense-tab" data-toggle="tab" href="#expense" role="tab" aria-controls="expense" aria-selected="true">Expenses</a>
+            </li>
+            <li class="nav-item col">
+                <a class="nav-link" id="todo-tab" data-toggle="tab" href="#todo" role="tab" aria-controls="todo" aria-selected="false">Todo</a>
+            </li>
+            <li class="nav-item col">
+                <a class="nav-link" id="expense_graph-tab" data-toggle="tab" href="#expense_graph" role="tab" aria-controls="expense_graph"
+                    aria-selected="false">Expense Graph</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="expense" role="tabpanel" aria-labelledby="expense-tab">
+                <br>
+                <form id="expense" class="form">
+                    <div class="input-group row">
+                        <select id="category" class="form-control col" style="height:40px;">
+                                    <option>Food</option>
+                                    <option>Travel</option>
+                                    <option>Bills</option>
+                                    <option>Recharge</option>
+                                </select>
+                        <input id="money_spent" placeholder="Money spent" type="number" class="form-control col" min="0" required>
+                        <input id="spent_at_date" type="date" class="form-control col" required>
+                        <input id="spent_at_time" type="time" class="form-control col" required>
+                        <select id="spent_at_merediem" class="form-control col" style="height:40px;">
+                                    <option>AM</option>
+                                    <option>PM</option>
+                                </select>
+                        <div class="input-group-append">
+                            <input type="submit" value="Add" class="btn btn-outline-primary col">
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <div class="row" id="expenses">
                 </div>
-            </fieldset>
-        </form>
-        <form id="note" class="form form-inline my-2 my-lg-0" style="display:none">
-            <fieldset>
-                <legend>Add Note</legend>
-                <input id="title" placeholder="Title" class="form-control mr-sm-2" required>
-                <input id="description" placeholder="Description" class="form-control mr-sm-2" required>
-                <input type="submit" value="Add" class="btn btn-outline-success my-2 my-sm-0">
-            </fieldset>
-        </form>
-        <br>
-        <div class="showing-expense">
-            <table class="table table-hover" id="expenses">
-            </table>
-        </div>
-        <hr>
-        <div class="showing-note">
-            <table class="table table-hover" id="notes">
-            </table>
+            </div>
+            <div class="tab-pane fade" id="todo" role="tabpanel" aria-labelledby="todo-tab">
+                <br>
+                <form id="note" class="form">
+                    <div class="input-group row">
+                        <input id="title" placeholder="Title" class="form-control col" required>
+                        <input id="description" placeholder="Description" class="form-control col" required>
+                        <div class="input-group-append">
+                            <input type="submit" value="Add" class="btn btn-outline-primary col">
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <div class="row" id="notes">
+                </div>
+            </div>
+            <div class="tab-pane fade" id="expense_graph" role="tabpanel" aria-labelledby="expense_graph-tab">...</div>
         </div>
     </div>
 </body>
