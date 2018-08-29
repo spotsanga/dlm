@@ -4,7 +4,7 @@ var left = 1,
 var getArticlesByPage = function (pageNo) {
     $('html, body').animate({
         scrollTop: $("body").offset().top
-    }, 500);
+    }, 1000);
     page = pageNo;
     getArticles();
     $(".pages").attr("class", "pages page-item");
