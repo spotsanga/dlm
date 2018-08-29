@@ -17,8 +17,9 @@ class ArticleController extends Controller
         } else if (session()->get('id') != $req->input('id')) {
             return response()->json(['data' => ['code' => '2', 'msg' => 'Session Expired']]);
         }
+        $page = $req->input('page') - 1;
         $data['code'] = '0';
-        $data['articles'] = Article::orderBy('publishedAt', 'desc')->offset(0)->limit(30)->select('source', 'author', 'title', 'description', 'url', 'urlToImage', 'publishedAt')->get();
+        $data['articles'] = Article::orderBy('publishedAt', 'desc')->offset($page * 21)->limit(21)->select('source', 'author', 'title', 'description', 'url', 'urlToImage', 'publishedAt')->get();
         return response()->json(['data' => $data]);
     }
     public function datasets(Request $req)

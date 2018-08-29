@@ -56,6 +56,27 @@
         </div>
         <div class="card-columns" id='content'>
         </div>
+        <div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled" id="prev-li">
+                        <a class="page-link" href=javascript:pagesDec(); aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                    </li>
+                    <li class="pages page-item active"><a class="page-link" id="item-1" href=javascript:getArticlesByPage(1);>1</a></li>
+                    <li class="pages page-item"><a class="page-link" id="item-2" href=javascript:getArticlesByPage(2);>2</a></li>
+                    <li class="pages page-item"><a class="page-link" id="item-3" href=javascript:getArticlesByPage(3);>3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href=javascript:pagesInc(); aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </body>
 

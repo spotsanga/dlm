@@ -1,6 +1,52 @@
+var left = 1,
+    page = 1,
+    right = 3;
+var getArticlesByPage = function (pageNo) {
+    page = pageNo;
+    getArticles();
+    $(".pages").attr("class", "pages page-item");
+    $("#item-" + (page - left + 1)).parent().attr("class", "pages page-item active");
+    checkForDisable();
+};
+var pagesInc = function () {
+    if (page == right) {
+        left = page + 1;
+        right = page + 3;
+        $("#item-1").text(page + 1);
+        $("#item-1").attr("href", "javascript:getArticlesByPage(" + (page + 1) + ");");
+        $("#item-2").text(page + 2);
+        $("#item-2").attr("href", "javascript:getArticlesByPage(" + (page + 2) + ");");
+        $("#item-3").text(page + 3);
+        $("#item-3").attr("href", "javascript:getArticlesByPage(" + (page + 3) + ");");
+    }
+    getArticlesByPage(page + 1);
+};
+var pagesDec = function () {
+    if (page == left) {
+        left = page - 3;
+        right = page - 1;
+        $("#item-1").text(page - 3);
+        $("#item-1").attr("href", "javascript:getArticlesByPage(" + (page - 3) + ");");
+        $("#item-2").text(page - 2);
+        $("#item-2").attr("href", "javascript:getArticlesByPage(" + (page - 2) + ");");
+        $("#item-3").text(page - 1);
+        $("#item-3").attr("href", "javascript:getArticlesByPage(" + (page - 1) + ");");
+    }
+    checkForDisable();
+    getArticlesByPage(page - 1);
+};
+var checkForDisable = function () {
+    if(page==1){
+        $("#prev-li").attr("class","page-item disabled");
+    }else{
+        $("#prev-li").attr("class","page-item");
+    }
+};
+
 function getArticles() {
     var data = {};
     data['id'] = $("#id").val();
+    data['page'] = page;
     $.ajax({
         type: 'GET',
         data: data,
