@@ -18,7 +18,7 @@ class ArticleController extends Controller
             return response()->json(['data' => ['code' => '2', 'msg' => 'Session Expired']]);
         }
         $data['code'] = '0';
-        $data['articles'] = Article::orderBy('publishedAt', 'desc')->offset(0)->limit(9)->select('source', 'author', 'title', 'description', 'url', 'urlToImage', 'publishedAt')->get();
+        $data['articles'] = Article::orderBy('publishedAt', 'desc')->offset(0)->limit(30)->select('source', 'author', 'title', 'description', 'url', 'urlToImage', 'publishedAt')->get();
         return response()->json(['data' => $data]);
     }
     public function datasets(Request $req)

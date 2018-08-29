@@ -11,17 +11,25 @@ function getArticles() {
             return;
         }
         move();
-        var code = '<thead><th>#</th><th>Title</th><th>Description</th><th>PublishedAt</th><th>Source</th><th></th></thead>';
+        var code = '';
         for (var i = 0; i < articles.length; i++) {
-            code += '<tr>';
-            code += '<td><img class="rounded" src=' + articles[i]['urlToImage'] + ' height="100px" width="100px" onerror=this.src="images/news.png"></td>';
-            code += '<td>' + articles[i]['title'] + '</td>';
-            code += '<td>' + (articles[i]['description'] || "") + '</td>';
-            var date = new Date(articles[i]['publishedAt']);
-            code += '<td>' + date.toDateString() + "</td>";
-            code += '<td>' + articles[i]['source'] + '</td>';
-            code += '<td><a target="_blank" href="' + articles[i]['url'] + '"><i class="fas fa-external-link-alt"></i></td>';
-            code += '</tr>';
+            code += '\
+            <div class="col-lg-3 col-md-4 col-sm-12">\
+                <div class="card" style="margin-top:10px;box-shadow: 7px 7px 5px #aaaaaa;">\
+                    <img class="card-img-top" height="100px" width="100px" src=' + articles[i]['urlToImage'] + ' onerror=this.src="images/news.png">\
+                    <div class="card-body">\
+                        <h5 class="card-title">' + articles[i]['title'] + '</h5>\
+                        <p class="card-text">' + articles[i]['description'] + '</p>\
+                    </div>\
+                    <div class="card-footer">\
+                        <small class="text-muted">Published at : \
+                            ' + (date = new Date(articles[i]['publishedAt'])).toDateString() + '\
+                            <a style="float:right; color:black;" target="_blank" href="' + articles[i]['url'] + '"><i class="fas fa-external-link-alt"></i></a>\
+                        </small>\
+                    </div>\
+                </div>\
+            </div>\
+            ';
         }
         $("#content").html(code);
     });
