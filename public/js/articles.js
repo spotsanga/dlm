@@ -71,6 +71,7 @@ function getArticles() {
                         <p class="card-text">' + articles[i]['description'] + '</p>\
                     </div>\
                     <div class="card-footer">\
+                        <div style="text-transform:capitalize;">'+articles[i]['category']+'</div>\
                         <small class="text-muted">Published at : \
                             ' + (date = new Date(articles[i]['publishedAt'])).toDateString() + '\
                             <a style="float:right; color:black;" target="_blank" href="' + articles[i]['url'] + '"><i class="fas fa-external-link-alt"></i></a>\

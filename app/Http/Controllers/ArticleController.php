@@ -19,7 +19,11 @@ class ArticleController extends Controller
         }
         $page = $req->input('page') - 1;
         $data['code'] = '0';
-        $data['articles'] = Article::orderBy('publishedAt', 'desc')->offset($page * 21)->limit(21)->select('source', 'author', 'title', 'description', 'url', 'urlToImage', 'publishedAt')->get();
+        $data['articles'] = Article::join('article_to_category_mapping as A', 'A.article_id', '=', 'articles.id')
+            ->join('categories as C', 'A.category_id', '=', 'C.id')
+            ->orderBy('publishedAt', 'desc')
+            ->offset($page * 21)->limit(12)
+            ->select('source', 'author', 'title', 'description', 'url', 'urlToImage', 'publishedAt','category')->get();
         return response()->json(['data' => $data]);
     }
     public function datasets(Request $req)
