@@ -10,7 +10,7 @@ $("#signin").on("submit", function () {
     }).done(function (res) {
         console.log(JSON.stringify(res));
         if (res['data']['code'] == '0') {
-            location.replace("/dashboard");
+            location.replace("/articles");
         } else {
             $("#alert").attr("class", "alert-danger");
             $("#alert").html(res['data']['msg']);
