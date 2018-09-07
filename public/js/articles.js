@@ -67,11 +67,13 @@ function getArticles() {
                 <div class="card" style="margin-top:10px;box-shadow: 7px 7px 5px #aaaaaa;">\
                     <img class="card-img-top" height="200px" width="100px" src=' + articles[i]['urlToImage'] + ' onerror=this.src="images/news.png">\
                     <div class="card-body">\
-                        <h5 class="card-title">' + articles[i]['title'] + '</h5>\
+                        <h5 class="card-title">\
+                            <div style="text-transform:capitalize;">' + articles[i]['category'] + '</div><hr>\
+                            ' + articles[i]['title'] + '\
+                        </h5>\
                         <p class="card-text">' + articles[i]['description'] + '</p>\
                     </div>\
                     <div class="card-footer">\
-                        <div style="text-transform:capitalize;">'+articles[i]['category']+'</div>\
                         <small class="text-muted">Published at : \
                             ' + (date = new Date(articles[i]['publishedAt'])).toDateString() + '\
                             <a style="float:right; color:black;" target="_blank" href="' + articles[i]['url'] + '"><i class="fas fa-external-link-alt"></i></a>\
