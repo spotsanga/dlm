@@ -15,7 +15,7 @@ class UserController extends Controller
         if (!session()->has('id') || !User::find(session()->get('id'))) {
             return view("home");
         }
-        return redirect("dashboard");
+        return redirect("articles");
     }
     public function isUserForDashboard()
     {
