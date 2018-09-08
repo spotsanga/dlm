@@ -18,12 +18,15 @@
     #myBar {
         width: 1%;
         height: 5px;
-        background-color: green;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
     }
 </style>
 
-<body>
-    <nav class="navbar navbar-dark bg-dark sticky-top">
+<body class="bg-dark">
+    <nav class="navbar navbar-light bg-light sticky-top">
         <div class="container">
             <span class="navbar-brand">Daily Life Management</span>
             <ul class="nav">
@@ -52,7 +55,7 @@
     <div class="container">
         <input type="hidden" id="id" value="{{$id}}">
         <input type="hidden" id="_token" value="{{csrf_token()}}">
-        <div id="myBar">
+        <div id="myBar" class="bg-dark">
         </div>
         <div class="card-columns" id='content'>
         </div>

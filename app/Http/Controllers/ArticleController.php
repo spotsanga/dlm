@@ -23,7 +23,7 @@ class ArticleController extends Controller
             ->join('categories as C', 'A.category_id', '=', 'C.id')
             ->orderBy('publishedAt', 'desc')
             ->offset($page * 21)->limit(12)
-            ->select('source', 'author', 'title', 'description', 'url', 'urlToImage', 'publishedAt','category')->get();
+            ->select('source', 'author', 'title', 'description', 'url', 'urlToImage', 'publishedAt', 'category')->get();
         return response()->json(['data' => $data]);
     }
     public function datasets(Request $req)
@@ -34,7 +34,10 @@ class ArticleController extends Controller
             return response()->json(['data' => ['code' => '2', 'msg' => 'Session Expired']]);
         }
         $data['code'] = '0';
-        $data['articles'] = Article::whereNotIn('id', ArticleToCategoryMapping::select('article_id')->get())->orderBy('publishedAt', 'desc')->offset(0)->limit(10)->select('id', 'title', 'description', 'url')->get();
+        $data['articles'] = Article::whereNotIn('id', ArticleToCategoryMapping::select('article_id')->get())
+            ->orderBy('publishedAt', 'desc')
+            ->offset(0)->limit(10)
+            ->select('id', 'title', 'description', 'url')->get();
         $data['categories'] = Category::select('category')->get();
         return response()->json(['data' => $data]);
     }

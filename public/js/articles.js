@@ -64,7 +64,7 @@ function getArticles() {
         for (var i = 0; i < articles.length; i++) {
             code += '\
             <div class="">\
-                <div class="card" style="margin-top:10px;box-shadow: 7px 7px 5px #aaaaaa;">\
+                <div class="card">\
                     <img class="card-img-top" height="200px" width="100px" src=' + articles[i]['urlToImage'] + ' onerror=this.src="images/news.png">\
                     <div class="card-body">\
                         <h5 class="card-title">\
